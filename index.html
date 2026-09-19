@@ -18,4 +18,16 @@
 function startGame() {
   document.body.innerHTML = "<h1>Game Started!</h1>";
 }
-</script></button> </a> </body> </html> 
+</script></button> </a> </body> </html><button onclick="move(-30)">⬅️</button>
+<button onclick="move(30)">➡️</button>
+
+<script>
+let x = 50;
+
+function move(step) {
+  x += step;
+  if (x < 10) x = 10;
+  if (x > 90) x = 90;
+  document.getElementById("player").style.left = x + "%";
+}
+</script>
