@@ -30,4 +30,14 @@ function move(step) {
   if (x > 90) x = 90;
   document.getElementById("player").style.left = x + "%";
 }
+</script><button onclick="jump()">⬆️ Jump</button>
+
+<script>
+function jump() {
+  let p = document.getElementById("player");
+  p.style.bottom = "170px";
+  setTimeout(() => {
+    p.style.bottom = "80px";
+  }, 300);
+}
 </script>
