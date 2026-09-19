@@ -1,79 +1,92 @@
-<!DOCTYPE html> <html> <head> <title>Cube</title> </head> <<div id="player"></div>
+<!DOC
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cube</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+      margin:0;
+      background:#222;
+      color:white;
+      text-align:center;
+      font-family:Arial;
+      overflow:hidden;
+    }
+    #score{
+      margin:15px;
+      font-size:24px;
+    }
+    #player{
+      width:60px;
+      height:60px;
+      background:#00ff66;
+      border-radius:50%;
+      position:fixed;
+      left:50%;
+      bottom:80px;
+      transform:translateX(-50%);
+    }
+    #coin{
+      width:30px;
+      height:30px;
+      background:gold;
+      border-radius:50%;
+      position:fixed;
+      left:70%;
+      bottom:95px;
+    }
+    button{
+      margin:8px;
+      padding:12px 18px;
+      font-size:18px;
+    }
+  </style>
+</head>
+<body>
 
-<style>
-#player{
-  width:60px;
-  height:60px;
-  background:#00ff66;
-  border-radius:50%;
-  position:fixed;
-  left:50%;
-  bottom:80px;
-  transform:translateX(-50%);
-  border:3px solid white;
-}
-</style> style="background:black;color:white;text-align:center;padding-top:100px;font-family:Arial;"> <h1>Cube</h1> <p>Assalamualaikum</p> <p>Ye meri pehli website hai.</p> <img src="https://picsum.photos/250" width="250"> <p>Welcome to my website 🚀</p> <a href="tel:1234567890"> <button><button onclick="startGame()">Start Game</button>
+<h1>Cube</h1>
+<div id="score">Score: 0</div>
+<div id="player"></div>
+<div id="coin"></div>
+
+<button onclick="move(-10)">⬅️</button>
+<button onclick="jump()">⬆️</button>
+<button onclick="move(10)">➡️</button>
 
 <script>
-function startGame() {
-  document.body.innerHTML = "<h1>Game Started!</h1>";
+let x=50;
+let score=0;
+
+function move(step){
+  x+=step;
+  if(x<10)x=10;
+  if(x>90)x=90;
+  document.getElementById("player").style.left=x+"%";
+  checkCoin();
 }
-</script></button> </a> </body> </html><button onclick="move(-30)">⬅️</button>
-<button onclick="move(30)">➡️</button>
 
-<script>
-let x = 50;
-
-function move(step) {
-  x += step;
-  if (x < 10) x = 10;
-  if (x > 90) x = 90;
-  document.getElementById("player").style.left = x + "%";
+function jump(){
+  let p=document.getElementById("player");
+  p.style.bottom="170px";
+  setTimeout(()=>{
+    p.style.bottom="80px";
+    checkCoin();
+  },300);
 }
-</script><button onclick="jump()">⬆️ Jump</button>
 
-<script>
-function jump() {
-  let p = document.getElementById("player");
-  p.style.bottom = "170px";
-  setTimeout(() => {
-    p.style.bottom = "80px";
-  }, 300);
-}
-</script><div id=#coin{
-  width:30px;
-  height:30px;
-  background:gold;
-  border-radius:50%;
-  position:fixed;
-  left:50%;
-  bottom:95px;
-}
-}
-}
-</style><div id="score">Score: 0</div>
+function checkCoin(){
+  let p=document.getElementById("player").getBoundingClientRect();
+  let c=document.getElementById("coin").getBoundingClientRect();
 
-<script>
-let score = 0;
-
-setInterval(() => {
-  let player = document.getElementById("player");
-  let coin = document.getElementById("coin");
-
-  if (!player || !coin) return;
-
-  let p = player.getBoundingClientRect();
-  let c = coin.getBoundingClientRect();
-
-  if (
-    p.left < c.right &&
-    p.right > c.left &&
-    p.top < c.bottom &&
-    p.bottom > c.top
-  ) {
+  if(p.left<c.right && p.right>c.left && p.top<c.bottom && p.bottom>c.top){
     score++;
-    document.getElementById("score").innerText = "Score: " + score;
-    coin.style.left = (10 + Math.random() * 80) + "%";
+    document.getElementById("score").innerText="Score: "+score;
+    document.getElementById("coin").style.left=(10+Math.random()*80)+"%";
   }
-}, 50);
+}
 </script>
+
+</body>
+</html>
+
