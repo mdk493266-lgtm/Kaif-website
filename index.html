@@ -1,4 +1,18 @@
-<!DOCTYPE html> <html> <head> <title>Cube</title> </head> <body style="background:black;color:white;text-align:center;padding-top:100px;font-family:Arial;"> <h1>Cube</h1> <p>Assalamualaikum</p> <p>Ye meri pehli website hai.</p> <img src="https://picsum.photos/250" width="250"> <p>Welcome to my website 🚀</p> <a href="tel:1234567890"> <button><button onclick="startGame()">Start Game</button>
+<!DOCTYPE html> <html> <head> <title>Cube</title> </head> <<div id="player"></div>
+
+<style>
+#player{
+  width:60px;
+  height:60px;
+  background:#00ff66;
+  border-radius:50%;
+  position:fixed;
+  left:50%;
+  bottom:80px;
+  transform:translateX(-50%);
+  border:3px solid white;
+}
+</style> style="background:black;color:white;text-align:center;padding-top:100px;font-family:Arial;"> <h1>Cube</h1> <p>Assalamualaikum</p> <p>Ye meri pehli website hai.</p> <img src="https://picsum.photos/250" width="250"> <p>Welcome to my website 🚀</p> <a href="tel:1234567890"> <button><button onclick="startGame()">Start Game</button>
 
 <script>
 function startGame() {
