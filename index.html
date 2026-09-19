@@ -52,4 +52,29 @@ function jump() {
   left:70%;
   bottom:80px;
 }
-</style>
+</style><div id="score">Score: 0</div>
+
+<script>
+let score = 0;
+
+setInterval(() => {
+  let player = document.getElementById("player");
+  let coin = document.getElementById("coin");
+
+  if (!player || !coin) return;
+
+  let p = player.getBoundingClientRect();
+  let c = coin.getBoundingClientRect();
+
+  if (
+    p.left < c.right &&
+    p.right > c.left &&
+    p.top < c.bottom &&
+    p.bottom > c.top
+  ) {
+    score++;
+    document.getElementById("score").innerText = "Score: " + score;
+    coin.style.left = (10 + Math.random() * 80) + "%";
+  }
+}, 50);
+</script>
