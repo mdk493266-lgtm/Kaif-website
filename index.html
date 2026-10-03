@@ -111,6 +111,27 @@ function checkCoin(){
     document.getElementById("coin").style.left=(10+Math.random()*80)+"%";
   }
 }
+let enemyX=90;
+
+setInterval(()=>{
+  enemyX-=2;
+  if(enemyX<0) enemyX=90;
+
+  let e=document.getElementById("enemy");
+  e.style.left=enemyX+"%";
+
+  checkEnemy();
+},50);
+
+function checkEnemy(){
+  let p=document.getElementById("player").getBoundingClientRect();
+  let e=document.getElementById("enemy").getBoundingClientRect();
+
+  if(p.left<e.right && p.right>e.left && p.top<e.bottom && p.bottom>e.top){
+    alert("Game Over!");
+    location.reload();
+  }
+}
 </script>
 
 </body>
